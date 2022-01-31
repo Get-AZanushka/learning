@@ -1,0 +1,39 @@
+{
+	"name": "samplelineage",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "AzureSynapseAnalytics1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "advworkscustomer"
+				},
+				{
+					"linkedService": {
+						"referenceName": "AzureSynapseAnalytics1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "advworksorders"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "mdw_sampledata",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Join1"
+				}
+			],
+			"script": "source(output(\n\t\t{Customer Key} as integer,\n\t\t{WWI Customer ID} as integer,\n\t\tCustomer as string,\n\t\t{Bill To Customer} as string,\n\t\tCategory as string,\n\t\t{Buying Group} as string,\n\t\t{Primary Contact} as string,\n\t\t{Postal Code} as string,\n\t\t{Valid From} as timestamp,\n\t\t{Valid To} as timestamp,\n\t\t{Lineage Key} as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'synapseanalytics',\n\tschemaName: 'wwi',\n\ttableName: 'dimension_Customer',\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tstaged: true) ~> advworkscustomer\nsource(output(\n\t\t{Order Key} as long,\n\t\t{City Key} as integer,\n\t\t{Customer Key} as integer,\n\t\t{Stock Item Key} as integer,\n\t\t{Order Date Key} as date,\n\t\t{Picked Date Key} as date,\n\t\t{Salesperson Key} as integer,\n\t\t{Picker Key} as integer,\n\t\t{WWI Order ID} as integer,\n\t\t{WWI Backorder ID} as integer,\n\t\tDescription as string,\n\t\tPackage as string,\n\t\tQuantity as integer,\n\t\t{Unit Price} as decimal(18,2),\n\t\t{Tax Rate} as decimal(18,3),\n\t\t{Total Excluding Tax} as decimal(18,2),\n\t\t{Tax Amount} as decimal(18,2),\n\t\t{Total Including Tax} as decimal(18,2),\n\t\t{Lineage Key} as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'synapseanalytics',\n\tschemaName: 'wwi',\n\ttableName: 'fact_Order',\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tstaged: true) ~> advworksorders\nadvworkscustomer, advworksorders join(advworkscustomer@{Customer Key} == advworksorders@{Customer Key},\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join1\nJoin1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'json',\n\tfileSystem: 'mdwsynapsews',\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}
