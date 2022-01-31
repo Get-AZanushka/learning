@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "mdw-customerdemo-synapse"
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"value": ""
+		},
+		"amlblob_connectionString": {
+			"value": ""
+		},
+		"azureblobaml_connectionString": {
+			"value": ""
+		},
+		"mdw-customerdemo-synapse-WorkspaceDefaultSqlServer_connectionString": {
+			"value": ""
+		},
+		"mdw_sampledata_accountKey": {
+			"value": ""
+		},
+		"mdwsampledata_accountKey": {
+			"value": ""
+		},
+		"covid-tracking_sasUri": {
+			"value": ""
+		},
+		"mdw-customerdemo-synapse-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://mdwsampledata.dfs.core.windows.net"
+		},
+		"mdw_sampledata_properties_typeProperties_url": {
+			"value": "https://mdwsampledata.dfs.core.windows.net"
+		},
+		"mdwsampledata_properties_typeProperties_url": {
+			"value": "https://mdwsampledata.dfs.core.windows.net"
+		}
+	}
+}
