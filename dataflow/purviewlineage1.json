@@ -1,5 +1,5 @@
 {
-	"name": "Dataflow1",
+	"name": "purviewlineage1",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
