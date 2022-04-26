@@ -1,6 +1,9 @@
 {
 	"name": "purviewlineage2",
 	"properties": {
+		"folder": {
+			"name": "purviewlineage"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
