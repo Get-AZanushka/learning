@@ -1,0 +1,40 @@
+{
+	"name": "salesterritory",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "mdw_sampledata",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "SalesTerritory.csv",
+				"fileSystem": "adventureworks"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "1",
+				"type": "String"
+			},
+			{
+				"name": "Northwest",
+				"type": "String"
+			},
+			{
+				"name": "United States",
+				"type": "String"
+			},
+			{
+				"name": "North America",
+				"type": "String"
+			}
+		]
+	}
+}
