@@ -1,0 +1,23 @@
+{
+	"name": "ReturnRate",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "mdw_sampledata",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Return Unit Example.csv",
+				"fileSystem": "returnrateraw"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
