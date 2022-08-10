@@ -1,5 +1,5 @@
 {
-	"name": "Dataflow1",
+	"name": "ReturnRate",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
