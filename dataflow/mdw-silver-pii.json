@@ -1,0 +1,56 @@
+{
+	"name": "mdw-silver-pii",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText10",
+						"type": "DatasetReference"
+					},
+					"name": "uscaniatibronze"
+				}
+			],
+			"sinks": [
+				{
+					"name": "uscaniatisilverwithoutpii"
+				}
+			],
+			"transformations": [
+				{
+					"name": "identifyPII",
+					"linkedService": {
+						"referenceName": "RestService1",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> uscaniatibronze",
+				"uscaniatibronze call(output(",
+				"          headers as [string,string],",
+				"          status as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     format: 'rest',",
+				"     store: 'restservice',",
+				"     timeout: 30,",
+				"     httpMethod: 'GET',",
+				"     entity: 'language/:analyze-text?api-version=2022-05-01',",
+				"     headerColumnName: 'headers',",
+				"     bodyColumnName: 'body',",
+				"     statusColumnName: 'status',",
+				"     addResponseCode: true,",
+				"     requestFormat: ['type' -> 'json'],",
+				"     responseFormat: ['type' -> 'json', 'documentForm' -> 'documentPerLine']) ~> identifyPII",
+				"identifyPII sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> uscaniatisilverwithoutpii"
+			]
+		}
+	}
+}
