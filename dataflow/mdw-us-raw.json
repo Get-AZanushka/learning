@@ -29,7 +29,6 @@
 				"DataverseUS sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['usiatiraw'],",
-				"     truncate: true,",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
