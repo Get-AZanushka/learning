@@ -1,0 +1,23 @@
+{
+	"name": "caiati1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "mdw_sampledata",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "part-00000-ac5db290-6d9a-4d7c-9152-ad7d23da32fb-c000.csv",
+				"folderPath": "raw",
+				"fileSystem": "mdwdemo"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
