@@ -1,0 +1,27 @@
+{
+	"name": "PIIdetection",
+	"properties": {
+		"annotations": [],
+		"type": "CognitiveService",
+		"typeProperties": {
+			"subscriptionId": "df7028b2-5739-48ce-932e-09125e27938b",
+			"resourceGroup": "mdw-customerdemo",
+			"csName": "mdw-pii",
+			"csKind": "TextAnalytics",
+			"csLocation": "eastus",
+			"endPoint": "https://mdw-pii.cognitiveservices.azure.com/",
+			"csKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "cogservPII"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
