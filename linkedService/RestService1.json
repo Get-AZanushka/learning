@@ -1,0 +1,17 @@
+{
+	"name": "RestService1",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://mdw-pii.cognitiveservices.azure.com/",
+			"enableServerCertificateValidation": false,
+			"authenticationType": "ManagedServiceIdentity",
+			"aadResourceId": "https://mdw-pii.cognitiveservices.azure.com/"
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
