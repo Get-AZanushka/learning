@@ -1,0 +1,23 @@
+{
+	"name": "canlinkdata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapselink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "2022-12.csv",
+				"folderPath": "cr50e_canadaiati",
+				"fileSystem": "dataverse-anushkamadwe-unqf0128f43ab644195a56795ac9a579"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

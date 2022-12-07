@@ -6,24 +6,17 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "copyuscsv",
+						"referenceName": "uslinkdata",
 						"type": "DatasetReference"
 					},
 					"name": "DataverseUS"
 				},
 				{
 					"dataset": {
-						"referenceName": "copycancsv",
+						"referenceName": "canlinkdata",
 						"type": "DatasetReference"
 					},
 					"name": "DataverseCan"
-				},
-				{
-					"dataset": {
-						"referenceName": "copygbcsv",
-						"type": "DatasetReference"
-					},
-					"name": "DataverseGB"
 				}
 			],
 			"sinks": [
@@ -40,13 +33,6 @@
 						"type": "DatasetReference"
 					},
 					"name": "DatalakeCan"
-				},
-				{
-					"dataset": {
-						"referenceName": "copygbcsv",
-						"type": "DatasetReference"
-					},
-					"name": "DatalakeGB"
 				}
 			],
 			"transformations": [],
@@ -57,9 +43,6 @@
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> DataverseCan",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> DataverseGB",
 				"DataverseUS sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['usiatiraw'],",
@@ -78,16 +61,7 @@
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('hash', 1)) ~> DatalakeCan",
-				"DataverseGB sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     partitionFileNames:['gbiatiraw'],",
-				"     umask: 0022,",
-				"     preCommands: [],",
-				"     postCommands: [],",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     partitionBy('hash', 1)) ~> DatalakeGB"
+				"     partitionBy('hash', 1)) ~> DatalakeCan"
 			]
 		}
 	}
