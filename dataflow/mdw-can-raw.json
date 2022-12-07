@@ -29,7 +29,6 @@
 				"dataversecan sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['caniatiraw'],",
-				"     truncate: true,",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
