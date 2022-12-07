@@ -56,7 +56,7 @@
 				"usiatiraw, caniatiraw union(byName: true)~> union1",
 				"filternullrows sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:['uscaniatibronze'],",
+				"     partitionFileNames:['uscaniatibronze.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
