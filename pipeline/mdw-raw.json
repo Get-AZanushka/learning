@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "mdw-raw",
+				"name": "mdw-raw-us",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,38 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "rawflow",
+						"referenceName": "mdw-us-raw",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "mdw-raw-can",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "mdw-raw-us",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "mdw-can-raw",
 						"type": "DataFlowReference"
 					},
 					"compute": {
