@@ -42,6 +42,10 @@
 					"name": "DatalakeCan"
 				},
 				{
+					"dataset": {
+						"referenceName": "copygbcsv",
+						"type": "DatasetReference"
+					},
 					"name": "DatalakeGB"
 				}
 			],
@@ -53,33 +57,7 @@
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> DataverseCan",
-				"source(output(",
-				"          Column_1 as string,",
-				"          Column_2 as string,",
-				"          Column_3 as string,",
-				"          Column_4 as string,",
-				"          Column_5 as string,",
-				"          Column_6 as string,",
-				"          Column_7 as string,",
-				"          Column_8 as string,",
-				"          Column_9 as string,",
-				"          Column_10 as string,",
-				"          Column_11 as string,",
-				"          Column_12 as string,",
-				"          Column_13 as string,",
-				"          Column_14 as string,",
-				"          Column_15 as string,",
-				"          Column_16 as string,",
-				"          Column_17 as string,",
-				"          Column_18 as string,",
-				"          Column_19 as string,",
-				"          Column_20 as string,",
-				"          Column_21 as string,",
-				"          Column_22 as string,",
-				"          Column_23 as string,",
-				"          Column_24 as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
+				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> DataverseGB",
 				"DataverseUS sink(allowSchemaDrift: true,",
@@ -98,6 +76,9 @@
 				"     skipDuplicateMapOutputs: true) ~> DatalakeCan",
 				"DataverseGB sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> DatalakeGB"
 			]
