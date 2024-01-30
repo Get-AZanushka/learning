@@ -72,7 +72,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "nmc_patient_concerns.csv",
+						"fileName": "nmc_patient_concerns_2024.csv",
 						"container": "nmc-concerns"
 					},
 					"columnDelimiter": ",",
@@ -137,8 +137,8 @@
 						"     ignoreNoFilesFound: false) ~> source1",
 						"source1 select(mapColumn(",
 						"          id,",
-						"          each(match(name != 'ssn' && name != 'dob')),",
-						"          date_of_visit",
+						"          date_of_visit,",
+						"          each(match(name!='ssn'&&name!='dob'))",
 						"     ),",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true) ~> dropcolumns",
