@@ -1,0 +1,80 @@
+{
+	"name": "DelimitedText3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "nplsdemo",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "nmc_patient_concerns.csv",
+				"container": "nmc-concerns"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "first_name",
+				"type": "String"
+			},
+			{
+				"name": "last_name",
+				"type": "String"
+			},
+			{
+				"name": "email",
+				"type": "String"
+			},
+			{
+				"name": "gender",
+				"type": "String"
+			},
+			{
+				"name": "proc_code",
+				"type": "String"
+			},
+			{
+				"name": "proc_desc",
+				"type": "String"
+			},
+			{
+				"name": "referral_helpline",
+				"type": "String"
+			},
+			{
+				"name": "ssn",
+				"type": "String"
+			},
+			{
+				"name": "dob",
+				"type": "String"
+			},
+			{
+				"name": "nurse_first_name",
+				"type": "String"
+			},
+			{
+				"name": "nurse_last_name",
+				"type": "String"
+			},
+			{
+				"name": "nurse_id",
+				"type": "String"
+			},
+			{
+				"name": "Concern",
+				"type": "String"
+			}
+		]
+	}
+}
