@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "nmc_patient_concerns.csv",
+				"fileName": "nmc_patient_concerns_2024.csv",
 				"container": "nmc-concerns"
 			},
 			"columnDelimiter": ",",
